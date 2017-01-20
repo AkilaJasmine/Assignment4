@@ -1,0 +1,8 @@
+<div ng-if="$ctrl.items.length === 0">
+    <p>Sorry!!, There are no items for this particular category!!</p>
+</div>
+<div>
+    <ul ng-repeat="item in $ctrl.items">
+        <li>{{item.name}}</li>
+    </ul>
+</div>
