@@ -21,21 +21,10 @@
         service.getItemsForCategory = function(categoryShortName){
             return $http({
                 method : 'GET',
-                url : 'https://davids-restaurant.herokuapp.com/menu_items.json',
-                //params : {name: categoryShortName}
+                url : 'https://davids-restaurant.herokuapp.com/menu_items.json?category=',
+                params : {category: categoryShortName}
             }).then(function(response){
-                var menuItems = response.data.menu_items;
-                var filterItems = [];
-                if(categoryShortName.indexOf("Sushi") != -1){
-                    categoryShortName = "Sushi";
-                }
-                 for (var i = 0; i < menuItems.length; i++) {
-                    var item = menuItems[i].name.toLowerCase();
-                        if (item.indexOf(categoryShortName.toLowerCase()) != -1) {
-                            filterItems.push(menuItems[i]);
-                        }
-                }
-                return filterItems;
+                return response.data.menu_items;
             });
         };
 
